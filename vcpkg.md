@@ -21,22 +21,21 @@ yum update
 yum install centos-release-scl  
 yum install devtoolset-7  
 scl enable devtoolset-7 bash  
-```
-1.安装cmake(版本：3.25+)  
-2.安装vcpkg（本例安装在：/root/vcpkg目录下，其他目录需要修改cmake指令） 
-
-设置环境变量：    
+```    
+1. 安装cmake(版本：3.25+)  
+2. 安装vcpkg（本例安装在：/root/vcpkg目录下，其他目录需要修改cmake指令） 
+3. 设置环境变量：    
 ```CMAKE_TOOLCHAIN_FILE /root/vcpkg/scripts/buildsystems/vcpkg.cmake```
-在工程目录下执行：    
-cmake . -B build    
 
-或者，不设置环境变量：    
-cmake -B build -S . "-DCMAKE_TOOLCHAIN_FILE=/root/vcpkg/scripts/buildsystems/vcpkg.cmake"  
+或者，不设置环境变量，也可以通过参数指定：    
+```cmake -B build -S . "-DCMAKE_TOOLCHAIN_FILE=/root/vcpkg/scripts/buildsystems/vcpkg.cmake"  ```    
 其他用户:    
-cmake -B build -S . "-DCMAKE_TOOLCHAIN_FILE=/home/cloudforce/vcpkg/scripts/buildsystems/vcpkg.cmake"  
-
-进入build目录，运行：    
-make编译工程
+```cmake -B build -S . "-DCMAKE_TOOLCHAIN_FILE=/home/cloudforce/vcpkg/scripts/buildsystems/vcpkg.cmake"  ````    
+4. 在工程目录下执行：    
+```cmake . -B build```    
+    
+5. 进入build目录，运行：    
+make编译工程    
 
 ## 工程配置
 在需要引入C++的第三方库时，可以使用vcpkg search 库名，查询是否有对应的库。
